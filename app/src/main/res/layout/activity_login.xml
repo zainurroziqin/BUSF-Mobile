@@ -1,92 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#254DBF"
     android:orientation="vertical"
-    android:background="#000"
     tools:context=".activity.LoginActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SMART FARM"
-        android:textSize="46sp"
-        android:textStyle="bold"
-        android:textColor="#FF0000"
-        android:textAlignment="center"
-        android:layout_marginTop="40dp"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mobile"
-        android:textSize="30sp"
-        android:textColor="#FFC107"
-        android:textAlignment="center"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="1.0"
-        android:textSize="28sp"
-        android:textStyle="italic"
-        android:textColor="#FFFFFF"
-        android:textAlignment="center"
-        />
-
-    <EditText
-        android:id="@+id/edt_username"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="90dp"
-        android:background="@drawable/oval"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:drawableStart="@drawable/ic_baseline_email_24"
-        android:drawablePadding="12dp"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:hint="Username"
-        android:textColor="#000000"
-        />
-
-    <EditText
-        android:id="@+id/edt_password"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/oval"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:drawableStart="@drawable/ic_baseline_lock_24"
-        android:drawablePadding="12dp"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:hint="Password"
-        android:textColor="#000000"
-        />
-
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="140dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/buttonred"
-        android:text="LOGIN"
-        android:onClick="actionLogin"
-        android:textColor="@color/kuning"
-        android:textSize="22sp"/>
-
     <ImageView
-        android:layout_gravity="center"
+        android:id="@+id/iv_logo"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/buf"
-        android:contentDescription="TODO" />
+        android:src="@drawable/busf"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        />
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:id="@+id/ln_logo"
+        android:layout_width="match_parent"
+        android:layout_below="@id/iv_logo"
+        android:layout_height="390dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/bg_lgn"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="LOGIN"
+            android:textColor="#254DBF"
+            android:textSize="20pt"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="35dp"
+            android:background="@drawable/line" />
+
+        <EditText
+            android:id="@+id/edt_username"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="23dp"
+            android:background="@drawable/bg_et"
+            android:hint="Username"
+            android:textAlignment="textStart"
+            android:textColor="#7C7272"
+            android:textSize="10pt" />
+
+
+        <EditText
+            android:id="@+id/edt_password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginRight="23dp"
+            android:background="@drawable/bg_et"
+            android:hint="Password"
+            android:textAlignment="textStart"
+            android:textColor="#7C7272"
+            android:textSize="10pt" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="23dp"
+            android:onClick="actionLogin"
+            android:background="@drawable/bg_btn_login"
+            android:text="login"
+            android:textSize="7pt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Copyright"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_copyright_24"
+            android:layout_gravity="center_vertical"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Barokah Farm 2021"
+            />
+    </LinearLayout>
+</RelativeLayout>

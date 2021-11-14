@@ -1,6 +1,7 @@
 package com.example.busfmobile.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -12,20 +13,27 @@ public class MainActivity extends AppCompatActivity {
 
     private final String TAG = getClass().getSimpleName();
     private int flagExit = 0;
-    TextView tvHello;
+    TextView tvNama;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tvHello = findViewById(R.id.tvHello);
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//
+//        getSupportActionBar().setTitle("BUSF");
+//        toolbar.setSubtitle("Barokah utama");
+//        toolbar.setLogo(R.drawable.ic_baseline_menu_24);
+//
+        tvNama = findViewById(R.id.tv_nama);
         Bundle extras = getIntent().getExtras();
-        tvHello.setText(extras.getString("username"));
-        if(extras!=null){
-            setTitle(extras.getString("username"));
-        }else {
-            setTitle("Home");
-        }
+        tvNama.setText(extras.getString("username"));
+//        if(extras!=null){
+//            setTitle(extras.getString("username"));
+//        }else {
+//            setTitle("Home");
+//        }
 
     }
 

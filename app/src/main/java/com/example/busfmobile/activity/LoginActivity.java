@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         proDialog.setMessage("silahkan tunggu");
         proDialog.show();
 
-        String globalURL = "http://192.168.0.105/";
+        String globalURL = "http://192.168.0.106/";
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(globalURL)
                 .addConverterFactory(GsonConverterFactory.create());
