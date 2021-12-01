@@ -2,7 +2,20 @@ package com.example.busfmobile.model;
 
 public class User {
     String nama, alamat, username, password, role,telp;
-    int tgl_dibuat;
+    int id,tgl_dibuat;
+
+//    public User(String username, String password) {
+//        this.username = username;
+//        this.password = password;
+//    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNama() {
         return nama;

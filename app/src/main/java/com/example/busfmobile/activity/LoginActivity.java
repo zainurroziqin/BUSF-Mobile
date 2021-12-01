@@ -14,7 +14,8 @@ import android.widget.Toast;
 
 import com.example.busfmobile.R;
 import com.example.busfmobile.api.APIRequestData;
-import com.example.busfmobile.api.RetroServer;
+import com.example.busfmobile.api.SessionManager;
+import com.example.busfmobile.model.Login;
 import com.example.busfmobile.model.User;
 import com.example.busfmobile.model.UserResponse;
 
@@ -28,6 +29,8 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText edtusername, edtpassword;
     private final String TAG = getClass().getSimpleName();
+    private SessionManager sm;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +39,9 @@ public class LoginActivity extends AppCompatActivity {
 
         edtusername = findViewById(R.id.edt_username);
         edtpassword = findViewById(R.id.edt_password);
+        sm = new SessionManager(LoginActivity.this);
 
     }
-
 
 
     public void actionLogin(View view) {
@@ -68,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
         proDialog.setMessage("silahkan tunggu");
         proDialog.show();
 
-        String globalURL = "http://192.168.0.106/";
+        String globalURL = "http://192.168.0.107/";
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(globalURL)
                 .addConverterFactory(GsonConverterFactory.create());
@@ -84,10 +87,15 @@ public class LoginActivity extends AppCompatActivity {
                 if ((response.body()!= null)){
                     if (response.body().getCode() == 200){
                         User logUser = response.body().getUser_list().get(0);
+                        sm.storeLogin(logUser.getUsername(), logUser.getNama());
+//                        sharedPreManager.SaveUser(logUser);
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        intent.putExtra("username", logUser.getNama());
+//                        intent.putExtra("username", logUser.getNama());
+//                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        Login.setLogin(logUser.getNama());
                         startActivity(intent);
                         finish();
+
                     }else if(response.body().getCode() == 401){
                         new AlertDialog.Builder(LoginActivity.this)
                                 .setTitle("Peringatan!")
@@ -124,4 +132,17 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        if (sharedPreManager.isLoggedIn()){
+//            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+////                        intent.putExtra("username", logUser.getNama());
+//            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+////            Login.setLogin(logUser.getNama());
+//            startActivity(intent);
+//            finish();
+//        }
+//    }
 }

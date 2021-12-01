@@ -70,6 +70,7 @@
             android:layout_marginTop="14dp"
             android:layout_marginRight="23dp"
             android:background="@drawable/bg_et"
+            android:inputType="textPassword"
             android:hint="Password"
             android:textAlignment="textStart"
             android:textColor="#7C7272"
