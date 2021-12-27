@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import com.example.busfmobile.activity.LoginActivity;
+import com.example.busfmobile.activity.MainActivity;
 
 import java.util.HashMap;
 
@@ -33,18 +34,19 @@ public class SessionManager {
     public HashMap getDataLogin(){
         HashMap<String, String> map = new HashMap<>();
         map.put(KEY_NAMA, sp.getString(KEY_NAMA, null));
-        map.put(KEY_NAMA, sp.getString(KEY_USERNAME, null));
+        map.put(KEY_USERNAME, sp.getString(KEY_USERNAME, null));
         return map;
     }
 
     public void checkLogin(){
         if ( !this.Loggin()){
-            Intent login = new Intent(_context, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            Intent login = new Intent(_context, LoginActivity.class);
 //            login.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            login.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            login.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            login.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            login.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 //            login.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             _context.startActivity(login);
+            ((MainActivity)_context).finish();
 
         }
     }

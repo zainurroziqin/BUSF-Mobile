@@ -14,7 +14,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface APIRequestData {
-    @GET("BarokahUtama/Login.php")
+    @GET("Login.php")
     Call<UserResponse> login(@Query("username") String username, @Query("password") String password);
 
     @FormUrlEncoded
@@ -98,6 +98,12 @@ public interface APIRequestData {
             @Field("suhu_pagi") String suhu_pagi,
             @Field("suhu_siang") String suhu_siang,
             @Field("suhu_sore") String suhu_sore,
+            @Field("nama") String nama
+    );
+
+    @FormUrlEncoded
+    @POST("getImage.php")
+    Call<UserResponse> ambilGambar(
             @Field("nama") String nama
     );
 }

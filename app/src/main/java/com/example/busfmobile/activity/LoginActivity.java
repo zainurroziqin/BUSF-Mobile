@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText edtusername, edtpassword;
     private final String TAG = getClass().getSimpleName();
     private SessionManager sm;
+
 
 
     @Override
@@ -71,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         proDialog.setMessage("silahkan tunggu");
         proDialog.show();
 
-        String globalURL = "http://192.168.0.107/";
+        String globalURL = "https://ws-tif.com/barokah-utama-farm/API/";
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(globalURL)
                 .addConverterFactory(GsonConverterFactory.create());
@@ -92,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 //                        intent.putExtra("username", logUser.getNama());
 //                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        Login.setLogin(logUser.getNama());
+//                        Login.setLogin(logUser.getNama());
                         startActivity(intent);
                         finish();
 

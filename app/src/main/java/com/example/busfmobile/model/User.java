@@ -1,7 +1,7 @@
 package com.example.busfmobile.model;
 
 public class User {
-    String nama, alamat, username, password, role,telp;
+    String nama,gambar, alamat, username, password, role,telp;
     int id,tgl_dibuat;
 
 //    public User(String username, String password) {
@@ -23,6 +23,14 @@ public class User {
 
     public void setNama(String nama) {
         this.nama = nama;
+    }
+
+    public String getGambar() {
+        return gambar;
+    }
+
+    public void setGambar(String gambar) {
+        this.gambar = gambar;
     }
 
     public String getAlamat() {

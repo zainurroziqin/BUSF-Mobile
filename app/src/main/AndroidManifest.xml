@@ -6,12 +6,16 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/buf"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BUSFMobile"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".activity.AlarmActivity"
+            android:exported="true" />
         <activity
             android:name=".activity.KandangDActivity"
             android:exported="true" />
@@ -26,8 +30,7 @@
             android:exported="true" />
         <activity
             android:name=".activity.MainActivity"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
