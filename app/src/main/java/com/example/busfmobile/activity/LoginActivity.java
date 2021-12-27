@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.busfmobile.R;
 import com.example.busfmobile.api.APIRequestData;
 import com.example.busfmobile.api.SessionManager;
+import com.example.busfmobile.api.SessionPreferences;
 import com.example.busfmobile.model.Login;
 import com.example.busfmobile.model.User;
 import com.example.busfmobile.model.UserResponse;
@@ -30,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText edtusername, edtpassword;
     private final String TAG = getClass().getSimpleName();
-    private SessionManager sm;
+    private SessionPreferences sp;
 
 
 
@@ -41,8 +42,18 @@ public class LoginActivity extends AppCompatActivity {
 
         edtusername = findViewById(R.id.edt_username);
         edtpassword = findViewById(R.id.edt_password);
-        sm = new SessionManager(LoginActivity.this);
+        sp = new SessionPreferences(LoginActivity.this);
 
+        cheskLogin();
+
+    }
+
+    private void cheskLogin() {
+        if (sp.getLogin()){
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
 
@@ -89,7 +100,9 @@ public class LoginActivity extends AppCompatActivity {
                 if ((response.body()!= null)){
                     if (response.body().getCode() == 200){
                         User logUser = response.body().getUser_list().get(0);
-                        sm.storeLogin(logUser.getUsername(), logUser.getNama());
+//                        sm.storeLogin(logUser.getUsername(), logUser.getNama());
+                        sp.setLogin(true);
+                        sp.setUsername(logUser.getNama());
 //                        sharedPreManager.SaveUser(logUser);
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 //                        intent.putExtra("username", logUser.getNama());
@@ -134,6 +147,11 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+
+//    private void cheskSession(){
+//        sm = new SessionManager(LoginActivity.this);
+//        sm.checkLogin();
+//    }
 
 //    @Override
 //    protected void onStart() {

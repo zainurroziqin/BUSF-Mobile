@@ -24,6 +24,7 @@ import com.example.busfmobile.R;
 import com.example.busfmobile.api.APIRequestData;
 import com.example.busfmobile.api.RetroServer;
 import com.example.busfmobile.api.SessionManager;
+import com.example.busfmobile.api.SessionPreferences;
 import com.example.busfmobile.model.Login;
 import com.example.busfmobile.model.User;
 import com.example.busfmobile.model.UserResponse;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String userImage, alamatGambar;
     ImageButton btnLogout;
     SessionManager sm;
+    SessionPreferences sp;
     List<User> listGambar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +56,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
 
-        cheskSession();
+//        cheskSession();
+
+
+        sp = new SessionPreferences(MainActivity.this);
+        String adf = sp.getUsername();
+
+
 
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
-        HashMap<String, String> map = sm.getDataLogin();
-        String adf = map.get(sm.KEY_NAMA);
+
+//        HashMap<String, String> map = sm.getDataLogin();
+//        String adf = map.get(sm.KEY_NAMA);
         userImage = adf;
         Login.setLogin(adf);
         ImageView imageView = findViewById(R.id.imgUser);
@@ -93,6 +102,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvNama = findViewById(R.id.tv_nama);
         String nama = Login.getLogin();
         tvNama.setText(adf);
+
+
+
+
 
 
 
@@ -151,8 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void cheskSession(){
-        sm = new SessionManager(MainActivity.this);
-        sm.checkLogin();
+
     }
 
     public void intentAlarm(View view) {
@@ -179,8 +191,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.action_logout:
-                sm.Logout();
-                sm.checkLogin();
+                sp.setLogin(false);
+                sp.setUsername("");
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
                 finish();
                 break;
         }

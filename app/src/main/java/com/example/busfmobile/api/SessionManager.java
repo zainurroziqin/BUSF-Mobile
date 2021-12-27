@@ -42,8 +42,8 @@ public class SessionManager {
         if ( !this.Loggin()){
             Intent login = new Intent(_context, LoginActivity.class);
 //            login.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            login.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            login.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//            login.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            login.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 //            login.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             _context.startActivity(login);
             ((MainActivity)_context).finish();
